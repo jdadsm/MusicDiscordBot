@@ -1,8 +1,12 @@
 import discord
-from discord.ext import commands
 import youtube_dl
 import spotipy
+import os
+from discord.ext import commands
 from spotipy.oauth2 import SpotifyClientCredentials
+
+# Load env vars
+DISCORD_BOT_TOKEN = os.environ.get('DISCORD_BOT_TOKEN')
 
 # Bot setup
 intents = discord.Intents.default()
@@ -60,4 +64,4 @@ async def stop(ctx):
     else:
         await ctx.send("The bot is not connected to a voice channel.")
 
-bot.run('YOUR_DISCORD_BOT_TOKEN')
+bot.run(DISCORD_BOT_TOKEN)

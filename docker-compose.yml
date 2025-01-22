@@ -1,0 +1,7 @@
+version: '3'
+services:
+  bot:
+    container_name: discord-music-bot
+    build: .
+    env_file:
+      - .env
