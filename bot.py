@@ -1,16 +1,11 @@
 import discord
-import logging
 import os
 from discord.ext import commands
 from backends.youtube import getstream ,search
-from backends.spotify import SpotifyProcessor
 
 from dotenv import load_dotenv
 
 load_dotenv()
-
-logger = logging.getLogger('my_logger')
-logger.setLevel(logging.DEBUG)
 
 DISCORD_BOT_TOKEN = os.environ.get('DISCORD_BOT_TOKEN')
 
