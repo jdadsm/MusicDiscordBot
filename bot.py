@@ -1,3 +1,4 @@
+import sys
 import discord
 import os
 from discord.ext import commands
@@ -5,7 +6,17 @@ from backends.youtube import getstream ,search
 
 from dotenv import load_dotenv
 
-load_dotenv()
+if getattr(sys, 'frozen', False):
+    base_path = sys._MEIPASS
+else:
+    base_path = os.path.dirname(os.path.abspath(__file__))
+    
+if not discord.opus.is_loaded():
+    opus_path = os.path.join(base_path, 'external', 'libopus', 'libopus-0.x64.dll')
+    discord.opus.load_opus(opus_path)
+    
+dotenv_path = os.path.join(base_path, '.env')
+load_dotenv(dotenv_path)
 
 DISCORD_BOT_TOKEN = os.environ.get('DISCORD_BOT_TOKEN')
 

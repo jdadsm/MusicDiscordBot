@@ -7,7 +7,7 @@
 python -m venv venv
 ```
 
-**Install the FFmpeg library**:
+**(For ubuntu) Install the FFmpeg library**:
 ```bash
 sudo apt-get install -y ffmpeg
 ```
@@ -55,5 +55,5 @@ docker compose up -d
 **Run this in the root of the project**:
 
 ```bash
-pyinstaller --onefile bot.py
+pyinstaller --onefile --add-binary="external/libopus/libopus-0.x64.dll:." --add-data ".env:." --add-data "external/ffmpeg/ffmpeg.exe:external/ffmpeg" --hidden-import="nacl" --hidden-import="_cffi_backend" bot.py
 ```
