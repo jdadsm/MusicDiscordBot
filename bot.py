@@ -50,6 +50,10 @@ async def play(ctx, *, query):
             return
 
     url, title = await search(query)
+    
+    if not url:
+        await ctx.send("No results found for the query.")
+        return
 
     if ctx.guild.id not in song_queue:
         song_queue[ctx.guild.id] = []
